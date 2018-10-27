@@ -21,7 +21,6 @@ def _update(rating, team, opponent_rating, result, k):
     else:
         result = 0
     expected = _expected_score(rating, opponent_rating)
-    print(result)
     return _update_rating(rating, expected, result, k)
 
 
@@ -40,7 +39,6 @@ def compute(df, k = 22, start = 1500):
     _check_result_column(df)
     elo_ranks = {}
     datamatrix = df[expected_columns].values
-    print(datamatrix)
     n_rows, _ = datamatrix.shape
     result_mat = np.zeros((n_rows, 2))
     for i in range(0, n_rows):
@@ -80,6 +78,7 @@ if __name__ == "__main__":
             'result': 'c'
         }
     ])    
+    print(df)
     mat, ranks = compute(df)
     print(mat)
     print(ranks)
